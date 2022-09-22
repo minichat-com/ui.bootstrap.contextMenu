@@ -226,7 +226,7 @@
                       : null);
 
                   if (clickFunction) {
-                    var res = clickFunction.call($scope, $scope, event, modelValue, text, $li);
+                    var res = clickFunction.call($scope, $scope, event, modelValue, text, $li, $event);
                     if(res === undefined || res) {
                       cleanupFunction();
                     }
