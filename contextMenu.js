@@ -210,6 +210,21 @@
               });
             };
 
+            if (item.rightClick) {
+              $li.on('contextmenu', function ($event) {
+                $event.preventDefault();
+                $scope.$apply(function () {
+                  var cleanupFunction = function () {
+                    $(event.currentTarget).removeClass('context');
+                    removeAllContextMenus();
+                  };
+                  var res = item.rightClick.call($scope, $scope, event, modelValue, text, $li, $event);
+                  if(res === undefined || res) {
+                    cleanupFunction();
+                  }
+                });
+              });
+            }
             $li.on('click', function ($event) {
               if($event.which == 1) {
                 $event.preventDefault();
