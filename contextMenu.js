@@ -377,6 +377,8 @@
 
           doAfterAllPromises(params);
 
+          setTimeout(() => doAfterAllPromises(params), 25);
+
           $rootScope.$broadcast(ContextMenuEvents.ContextMenuOpened, {
             context: _clickedElement,
             contextMenu: $ul,
